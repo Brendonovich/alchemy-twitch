@@ -1,0 +1,27 @@
+{
+  "name": "alchemy-twitch",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "main": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsgo -b",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@alchemy.run/cloudflare": "2.0.0-beta.84",
+    "alchemy": "2.0.0-beta.84",
+    "effect": "4.0.6"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "5.20261012.1",
+    "@effect/vitest": "4.0.6",
+    "@types/node": "24.13.3",
+    "@typescript/native-preview": "7.0.0-dev.20260514.1",
+    "vitest": "^4.1.0"
+  },
+  "packageManager": "pnpm@12.2.1"
+}
