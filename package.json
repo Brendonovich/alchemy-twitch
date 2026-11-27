@@ -1,22 +1,42 @@
 {
-  "name": "alchemy-twitch",
-  "version": "0.0.0",
-  "private": true,
+  "name": "@brendonovich/alchemy-twitch",
+  "version": "0.0.1",
+  "description": "Twitch EventSub resources for Alchemy v2, written with Effect v4",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Brendonovich/alchemy-twitch.git"
+  },
   "type": "module",
-  "main": "./src/index.ts",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "exports": {
-    ".": "./src/index.ts"
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "src"
+  ],
+  "publishConfig": {
+    "access": "public"
   },
   "scripts": {
+    "build": "rm -rf dist && tsgo -p tsconfig.build.json",
     "typecheck": "tsgo -b",
-    "test": "vitest run"
+    "test": "vitest run",
+    "prepublishOnly": "pnpm typecheck && pnpm test && pnpm build"
   },
-  "dependencies": {
-    "@alchemy.run/cloudflare": "2.0.0-beta.84",
-    "alchemy": "2.0.0-beta.84",
-    "effect": "4.0.6"
+  "peerDependencies": {
+    "@alchemy.run/cloudflare": "^2.0.0-beta.84",
+    "alchemy": "^2.0.0-beta.84",
+    "effect": "^4.0.6"
   },
   "devDependencies": {
+    "@alchemy.run/cloudflare": "2.0.0-beta.84",
+    "alchemy": "2.0.0-beta.84",
+    "effect": "4.0.6",
     "@cloudflare/workers-types": "5.20261012.1",
     "@effect/vitest": "4.0.6",
     "@types/node": "24.13.3",

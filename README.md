@@ -1,4 +1,4 @@
-# alchemy-twitch
+# @brendonovich/alchemy-twitch
 
 Twitch EventSub resources for [Alchemy](https://alchemy.run) v2, written with [Effect](https://effect.website) v4.
 
@@ -9,10 +9,8 @@ Twitch EventSub resources for [Alchemy](https://alchemy.run) v2, written with [E
 ## Install
 
 ```sh
-pnpm add github:brendonovich/alchemy-twitch alchemy @alchemy.run/cloudflare effect
+pnpm add @brendonovich/alchemy-twitch alchemy @alchemy.run/cloudflare effect
 ```
-
-The package ships TypeScript source, so your bundler or runtime has to load `.ts` files.
 
 ## EventSub example
 
@@ -20,7 +18,7 @@ The package ships TypeScript source, so your bundler or runtime has to load `.ts
 import * as Cloudflare from "@alchemy.run/cloudflare";
 import * as Effect from "effect/Effect";
 import * as HttpServerResponse from "effect/http/HttpServerResponse";
-import * as Twitch from "alchemy-twitch";
+import * as Twitch from "@brendonovich/alchemy-twitch";
 
 export class Bot extends Cloudflare.Worker<Bot>()(
   "TwitchBot",
