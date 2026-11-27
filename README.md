@@ -27,15 +27,25 @@ export class Bot extends Cloudflare.Worker<Bot>()(
   { main: import.meta.url },
   Effect.gen(function* () {
     const conduit = yield* Twitch.EventSub.Conduit("BotConduit");
-    const eventsub = yield* Twitch.EventSub.consume(conduit, ["channel.follow"], (event) =>
-      Effect.log(`${event.payload.user_login} followed`),
+    const eventsub = yield* Twitch.EventSub.consume(
+      conduit,
+      ["channel.follow", "stream.online"],
+      (event) => {
+        switch (event.type) {
+          case "channel.follow":
+            return Effect.log(`${event.payload.user_login} followed`);
+          case "stream.online":
+            return Effect.log(`${event.payload.broadcaster_user_login} went live`);
+        }
+      },
     );
 
     return {
       // Subscribe a channel at runtime, e.g. from an OAuth callback.
-      fetch: eventsub
-        .subscribe("channel.follow", { broadcaster_user_id: "123", moderator_user_id: "456" })
-        .pipe(Effect.as(HttpServerResponse.text("subscribed")), Effect.orDie),
+      fetch: Effect.all([
+        eventsub.subscribe("channel.follow", { broadcaster_user_id: "123", moderator_user_id: "456" }),
+        eventsub.subscribe("stream.online", { broadcaster_user_id: "123" }),
+      ]).pipe(Effect.as(HttpServerResponse.text("subscribed")), Effect.orDie),
     };
   }).pipe(Effect.provide(Twitch.EventSub.EventSubSourceLive)),
 ) {}
