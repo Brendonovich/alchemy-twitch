@@ -16,14 +16,9 @@ The package ships TypeScript source, so your bundler or runtime has to load `.ts
 
 ## EventSub example
 
-A Worker that logs chat messages and follows for any channel that authorizes the bot.
-
 ```ts
-// bot-worker.ts
 import * as Cloudflare from "@alchemy.run/cloudflare";
-import * as Config from "effect/Config";
 import * as Effect from "effect/Effect";
-import * as HttpServerRequest from "effect/http/HttpServerRequest";
 import * as HttpServerResponse from "effect/http/HttpServerResponse";
 import * as Twitch from "alchemy-twitch";
 
@@ -31,91 +26,22 @@ export class Bot extends Cloudflare.Worker<Bot>()(
   "TwitchBot",
   { main: import.meta.url },
   Effect.gen(function* () {
-    const botUserId = yield* Config.String("TWITCH_BOT_USER_ID");
-
-    // Created at deploy time.
     const conduit = yield* Twitch.EventSub.Conduit("BotConduit");
-
-    // At deploy time this generates a webhook secret and points shard 0 of
-    // the conduit at this Worker. At runtime it verifies each delivery and
-    // calls the handler for the listed types.
-    const eventsub = yield* Twitch.EventSub.consume(
-      conduit,
-      ["channel.chat.message", "channel.follow"],
-      (event) => {
-        switch (event.type) {
-          case "channel.chat.message":
-            return Effect.log(`${event.payload.chatter_user_login}: ${event.payload.message.text}`);
-          case "channel.follow":
-            return Effect.log(`${event.payload.user_login} followed`);
-        }
-      },
+    const eventsub = yield* Twitch.EventSub.consume(conduit, ["channel.follow"], (event) =>
+      Effect.log(`${event.payload.user_login} followed`),
     );
 
     return {
-      fetch: Effect.gen(function* () {
-        const request = yield* HttpServerRequest.HttpServerRequest;
-        const url = new URL(request.url, "http://worker");
-        const broadcasterId = url.searchParams.get("broadcaster_id");
-        if (url.pathname !== "/subscribe" || broadcasterId === null) {
-          return HttpServerResponse.text("not found", { status: 404 });
-        }
-
-        // Subscriptions are created at runtime. The condition is typed
-        // per subscription type.
-        const chat = yield* eventsub.subscribe("channel.chat.message", {
-          broadcaster_user_id: broadcasterId,
-          user_id: botUserId,
-        });
-        const follows = yield* eventsub.subscribe("channel.follow", {
-          broadcaster_user_id: broadcasterId,
-          moderator_user_id: botUserId,
-        });
-        return yield* HttpServerResponse.json({ chat, follows });
-      }).pipe(
-        Effect.catchTags({
-          TwitchAppError: (error) => Effect.succeed(HttpServerResponse.text(error.message, { status: 502 })),
-          ConduitUnavailable: (error) => Effect.succeed(HttpServerResponse.text(error.message, { status: 503 })),
-        }),
-      ),
+      // Subscribe a channel at runtime, e.g. from an OAuth callback.
+      fetch: eventsub
+        .subscribe("channel.follow", { broadcaster_user_id: "123", moderator_user_id: "456" })
+        .pipe(Effect.as(HttpServerResponse.text("subscribed")), Effect.orDie),
     };
   }).pipe(Effect.provide(Twitch.EventSub.EventSubSourceLive)),
 ) {}
-
-export default Bot;
 ```
 
-```ts
-// alchemy.run.ts
-import * as Cloudflare from "@alchemy.run/cloudflare";
-import * as Alchemy from "alchemy";
-import * as Effect from "effect/Effect";
-import * as Layer from "effect/Layer";
-import * as Twitch from "alchemy-twitch";
-import { Bot } from "./bot-worker.ts";
-
-export default Alchemy.Stack(
-  "TwitchBot",
-  {
-    providers: Layer.mergeAll(Cloudflare.providers(), Twitch.providers()),
-    state: Alchemy.localState(),
-  },
-  Effect.gen(function* () {
-    const bot = yield* Bot;
-    return { url: bot.url };
-  }),
-);
-```
-
-Set `TWITCH_CLIENT_ID`, `TWITCH_CLIENT_SECRET` and `TWITCH_BOT_USER_ID`, then deploy:
-
-```sh
-alchemy deploy alchemy.run.ts
-```
-
-Deliveries go to `/twitch/eventsub/<conduit>` on the Worker by default; pass `{ path }` as the fourth argument to `consume` to change it. Once deployed, open `/subscribe?broadcaster_id=…` for a broadcaster who has granted the bot `channel:bot` and given it moderator access (`channel.follow` needs a moderator).
-
-The full example is in [`example/`](./example).
+Add `Twitch.providers()` to your stack's providers, set `TWITCH_CLIENT_ID` and `TWITCH_CLIENT_SECRET`, and deploy. Deploying creates the conduit and points it at the Worker; the Worker verifies each delivery and calls your handler with a typed event. A fuller bot is in [`example/`](./example).
 
 ### Notes
 
