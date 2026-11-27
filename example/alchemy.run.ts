@@ -7,7 +7,7 @@ import * as Twitch from "../src/index.ts";
 import { Bot } from "./bot-worker.ts";
 
 /**
- * Example only; not deployed by the monorepo. Needs TWITCH_CLIENT_ID,
+ * Example stack. Needs TWITCH_CLIENT_ID,
  * TWITCH_CLIENT_SECRET and TWITCH_BOT_USER_ID in the environment.
  */
 export default Alchemy.Stack(
