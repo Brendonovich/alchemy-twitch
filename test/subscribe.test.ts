@@ -9,6 +9,7 @@ const consumerFor = (helix: ReturnType<typeof makeFakeHelix>, conduitId: string 
     app: helix.app,
     conduit: "BotConduit",
     path: "/twitch/eventsub/BotConduit",
+    types: ["channel.chat.message", "channel.follow"],
     conduitId: Effect.succeed(conduitId),
   });
 
@@ -69,6 +70,7 @@ describe("EventSub consumer subscribe", () => {
         app,
         conduit: "BotConduit",
         path: "/p",
+        types: ["channel.chat.message"],
         conduitId: Effect.succeed("conduit-9"),
       }).subscribe("channel.chat.message", condition);
       expect(result).toEqual({ id: undefined, status: "enabled", created: false });
@@ -99,6 +101,7 @@ describe("EventSub consumer subscribe", () => {
           app,
           conduit: "BotConduit",
           path: "/p",
+          types: ["channel.follow"],
           conduitId: Effect.succeed("conduit-9"),
         }).subscribe("channel.follow", { broadcaster_user_id: "1", moderator_user_id: "2" }),
       );
@@ -106,6 +109,13 @@ describe("EventSub consumer subscribe", () => {
       expect(error.message).toBe("missing channel:bot");
     }),
   );
+
+  it("exposes the scopes its types need", () => {
+    expect(consumerFor(makeFakeHelix(), "conduit-9").scopes).toEqual([
+      "moderator:read:followers",
+      "user:read:chat",
+    ]);
+  });
 
   it.effect("unsubscribes idempotently", () =>
     Effect.gen(function* () {

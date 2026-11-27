@@ -54,6 +54,7 @@ Add `Twitch.providers()` to your stack's providers, set `TWITCH_CLIENT_ID` and `
 ### Notes
 
 - Conduits are kept when the resource is destroyed, because deleting a conduit drops every subscription on it. A Twitch app can own at most five conduits; to manage one that already exists, use `Conduit("BotConduit", { adopt: { conduitId } })`.
+- The user a condition names must have granted the topic's scopes. `eventsub.scopes` lists every scope the consumed topics need, and `Twitch.authorizeUrl({ clientId, redirectUri, scopes: eventsub.scopes, state })` builds the Twitch consent link for them.
 - `subscribe` succeeds with `created: false` if the subscription already exists. `unsubscribe` succeeds for ids Twitch doesn't know.
 - Revocations are logged and acknowledged. A failing handler returns 500 so Twitch retries the delivery.
 

@@ -7,6 +7,7 @@ export {
   buildCondition,
   decodeEvent,
   isSubscriptionType,
+  scopesFor,
   subscriptions,
   UnknownSubscriptionType,
 } from "./registry.ts";

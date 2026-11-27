@@ -8,4 +8,6 @@ export {
   layerConfigFetch as twitchAppLayerConfigFetch,
 } from "./app.ts";
 export type { HelixCall, HelixReply, TwitchAppCredentials, TwitchAppService } from "./app.ts";
+export { authorizeUrl } from "./oauth.ts";
+export type { AuthorizeUrlInput } from "./oauth.ts";
 export { providers } from "./providers.ts";

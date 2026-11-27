@@ -27,7 +27,7 @@ import {
   type SubscriptionType,
 } from "./EventSource.ts";
 import { createConduitSubscription, deleteSubscription } from "./helix.ts";
-import { buildCondition, subscriptions } from "./registry.ts";
+import { buildCondition, scopesFor, subscriptions } from "./registry.ts";
 
 /**
  * Declaring a resource requires its provider in the type only: the engine
@@ -44,6 +44,7 @@ export const makeConsumer = <K extends SubscriptionType>(input: {
   readonly app: TwitchAppService;
   readonly conduit: string;
   readonly path: string;
+  readonly types: ReadonlyArray<K>;
   readonly conduitId: Effect.Effect<string | undefined>;
 }): EventSubConsumer<K> => {
   const conduitId = input.conduitId.pipe(
@@ -61,6 +62,7 @@ export const makeConsumer = <K extends SubscriptionType>(input: {
   return {
     path: input.path,
     conduitId,
+    scopes: scopesFor(input.types),
     subscribe: (type, condition) =>
       Effect.gen(function* () {
         const id = yield* conduitId;
@@ -154,6 +156,7 @@ export const EventSubSourceLive = Layer.effect(
           app,
           conduit: conduit.LogicalId,
           path,
+          types,
           conduitId,
         });
       });

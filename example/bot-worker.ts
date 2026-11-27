@@ -16,6 +16,7 @@ export class Bot extends Cloudflare.Worker<Bot>()(
   { main: import.meta.url },
   Effect.gen(function* () {
     const botUserId = yield* Config.String("TWITCH_BOT_USER_ID");
+    const clientId = yield* Config.String("TWITCH_CLIENT_ID");
 
     const conduit = yield* Twitch.EventSub.Conduit("BotConduit");
     const eventsub = yield* Twitch.EventSub.consume(
@@ -37,6 +38,18 @@ export class Bot extends Cloudflare.Worker<Bot>()(
       fetch: Effect.gen(function* () {
         const request = yield* HttpServerRequest.HttpServerRequest;
         const url = new URL(request.url, "http://worker");
+
+        // Send the user to Twitch to grant every scope the consumed topics need.
+        if (url.pathname === "/login") {
+          return HttpServerResponse.redirect(
+            Twitch.authorizeUrl({
+              clientId,
+              redirectUri: `${url.origin}/oauth/callback`,
+              scopes: eventsub.scopes,
+              state: crypto.randomUUID(),
+            }),
+          );
+        }
 
         // Stand-in for an OAuth callback: a real bot exchanges `code` for
         // the broadcaster's token (granting `channel:bot`) and reads the

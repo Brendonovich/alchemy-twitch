@@ -49,6 +49,12 @@ export interface EventSubConsumer<K extends SubscriptionType> {
   readonly path: string;
   readonly conduitId: Effect.Effect<string, ConduitUnavailable>;
   /**
+   * Every scope the listed types need, deduplicated and sorted. The user
+   * whose id a condition names must have granted them before `subscribe`
+   * succeeds; pass them to {@link authorizeUrl} to build the consent link.
+   */
+  readonly scopes: ReadonlyArray<string>;
+  /**
    * Create an app-token subscription delivered over the conduit. A 409 (the
    * same subscription exists) succeeds with `created: false` and the
    * existing id when Twitch lists it.

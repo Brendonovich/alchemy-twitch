@@ -224,6 +224,13 @@ export const decodeEvent = (
     ? decoders[type](payload)
     : Effect.fail(new UnknownSubscriptionType({ type }));
 
+/** The scopes a user must grant for every listed type: deduplicated and sorted. */
+export const scopesFor = (types: Iterable<SubscriptionType>): Array<string> => {
+  const scopes = new Set<string>();
+  for (const type of types) for (const scope of subscriptions[type].scopes) scopes.add(scope);
+  return [...scopes].sort();
+};
+
 /**
  * Validate a condition against its type and drop unset optional keys,
  * producing the flat string record Twitch expects.
