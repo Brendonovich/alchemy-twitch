@@ -7,7 +7,7 @@ describe("OAuth authorize URL", () => {
   it("collects, deduplicates and sorts the scopes of the listed types", () => {
     expect(
       scopesFor(["stream.online", "channel.subscribe", "channel.subscription.gift", "channel.chat.message"]),
-    ).toEqual(["channel:read:subscriptions", "user:read:chat"]);
+    ).toEqual(["channel:bot", "channel:read:subscriptions", "user:bot", "user:read:chat"]);
     expect(scopesFor(["stream.online"])).toEqual([]);
   });
 

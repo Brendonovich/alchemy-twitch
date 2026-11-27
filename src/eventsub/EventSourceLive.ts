@@ -68,7 +68,7 @@ export const makeConsumer = <K extends SubscriptionType>(input: {
         const id = yield* conduitId;
         return yield* createConduitSubscription(input.app, {
           type,
-          version: String(subscriptions[type].version),
+          version: subscriptions[type].version,
           condition: buildCondition(type, condition),
           conduitId: id,
         });

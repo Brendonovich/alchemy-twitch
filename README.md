@@ -60,7 +60,9 @@ Add `Twitch.providers()` to your stack's providers, set `TWITCH_CLIENT_ID` and `
 
 ### Supported subscription types
 
-`channel.chat.message`, `channel.follow`, `channel.subscribe`, `channel.subscription.gift`, `channel.subscription.message`, `channel.cheer`, `channel.raid`, `channel.update`, `stream.online`, `stream.offline`, `user.authorization.grant`, `user.authorization.revoke`, `conduit.shard.disabled`.
+Every type in [Twitch's EventSub reference](https://dev.twitch.tv/docs/eventsub/reference/) that can be delivered over a conduit, at its latest version (all of them except the webhook-only `drop.entitlement.grant`). `src/eventsub/schemas.ts` and `src/eventsub/subscriptions.ts` are generated from those docs with `pnpm generate`; each type's documented example payload is a test fixture.
+
+Fields Twitch documents as enums decode any string, so new values don't reject an event.
 
 ### Without Alchemy
 

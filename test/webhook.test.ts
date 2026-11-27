@@ -144,4 +144,39 @@ describe("EventSub webhook envelopes", () => {
       expect(error._tag).toBe("WebhookPayloadError");
     }),
   );
+
+  it.effect("decodes Twitch webhook and conduit bodies whose metadata is in headers", () =>
+    Effect.gen(function* () {
+      const webhookBody = (type: string, payload: object) =>
+        JSON.stringify({ subscription, ...payload });
+      const signedWebhook = (type: string, payload: string) =>
+        Effect.map(computeSignature({ secret, messageId, timestamp, body: payload }), (signature) => ({
+          headers: { ...headers(signature), "Twitch-Eventsub-Message-Type": type },
+          body: payload,
+          secret,
+          now,
+        }));
+
+      const notification = yield* decodeWebhook(
+        yield* signedWebhook("notification", webhookBody("notification", { event: { a: 1 } })),
+      );
+      expect(notification).toMatchObject({
+        _tag: "notification",
+        messageId,
+        messageTimestamp: new Date(timestamp),
+        event: { a: 1 },
+        subscription: { id: "sub-1", type: "stream.online" },
+      });
+
+      const verification = yield* decodeWebhook(
+        yield* signedWebhook("webhook_callback_verification", webhookBody("verification", { challenge: "c" })),
+      );
+      expect(verification).toMatchObject({ _tag: "verification", challenge: "c" });
+
+      const revocation = yield* decodeWebhook(
+        yield* signedWebhook("revocation", webhookBody("revocation", {})),
+      );
+      expect(revocation).toMatchObject({ _tag: "revocation", subscription: { id: "sub-1" } });
+    }),
+  );
 });

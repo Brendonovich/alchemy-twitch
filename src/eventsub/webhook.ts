@@ -218,11 +218,29 @@ export type WebhookDelivery =
       readonly subscription: WebhookSubscription;
     };
 
-const decodeMessage = Schema.decodeUnknownEffect(Schema.fromJsonString(WebhookMessage));
+const decodeJson = Schema.decodeUnknownEffect(Schema.fromJsonString(Schema.Json));
+
+const decodeMessage = Schema.decodeUnknownEffect(WebhookMessage);
+
+// Webhook and conduit deliveries put metadata in headers and send
+// `{ subscription, event | challenge }`; the WebSocket transport wraps the
+// same payload as `{ metadata, payload }`. Support both, preferring the
+// signed headers when they are present.
+const WebhookBody = Schema.Struct({
+  subscription: WebhookSubscription,
+  challenge: Schema.optional(Schema.String),
+  event: Schema.optional(Schema.Unknown),
+});
+
+const decodeWebhookBody = Schema.decodeUnknownEffect(WebhookBody);
+
+const payloadError = (cause: { readonly message: string }) =>
+  new WebhookPayloadError({ reason: cause.message });
 
 /**
- * Verify one webhook delivery and decode its envelope. Twitch's metadata is
- * in the body as well as the headers; the body is what's signed.
+ * Verify one delivery and decode its envelope. Metadata comes from the signed
+ * headers for webhooks and conduits; WebSocket-style envelopes fall back to
+ * the body metadata.
  */
 export const decodeWebhook = (
   input: VerifyInput,
@@ -230,9 +248,40 @@ export const decodeWebhook = (
   Effect.gen(function* () {
     yield* verifyWebhook(input);
     const text = typeof input.body === "string" ? input.body : decoder.decode(input.body);
-    const message = yield* decodeMessage(text).pipe(
-      Effect.mapError((cause) => new WebhookPayloadError({ reason: cause.message })),
-    );
+    const json = yield* decodeJson(text).pipe(Effect.mapError(payloadError));
+    const messageType = header(input.headers, MESSAGE_TYPE_HEADER);
+    // WebSocket envelopes carry their own metadata even when a message-type header is present.
+    const isEnvelope =
+      typeof json === "object" && json !== null && "metadata" in json && "payload" in json;
+
+    if (!isEnvelope && messageType !== undefined) {
+      const body = yield* decodeWebhookBody(json).pipe(Effect.mapError(payloadError));
+      switch (messageType) {
+        case "webhook_callback_verification":
+          return {
+            _tag: "verification" as const,
+            challenge: body.challenge ?? "",
+            subscription: body.subscription,
+          };
+        case "notification":
+          return {
+            _tag: "notification" as const,
+            messageId: header(input.headers, MESSAGE_ID_HEADER) ?? "",
+            messageTimestamp: new Date(header(input.headers, MESSAGE_TIMESTAMP_HEADER) ?? ""),
+            receivedAt: new Date(input.now ?? Date.now()),
+            subscription: body.subscription,
+            event: body.event,
+          };
+        case "revocation":
+          return { _tag: "revocation" as const, subscription: body.subscription };
+        default:
+          return yield* new WebhookPayloadError({
+            reason: `Unknown ${MESSAGE_TYPE_HEADER}: ${messageType}`,
+          });
+      }
+    }
+
+    const message = yield* decodeMessage(json).pipe(Effect.mapError(payloadError));
     switch (message.metadata.message_type) {
       case "webhook_callback_verification":
         return {

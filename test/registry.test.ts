@@ -11,8 +11,12 @@ const broadcaster = {
 
 describe("EventSub registry", () => {
   it("carries Twitch's version and scopes per type", () => {
-    expect(subscriptions["channel.follow"].version).toBe(2);
-    expect(subscriptions["channel.chat.message"].scopes).toEqual(["user:read:chat"]);
+    expect(subscriptions["channel.follow"].version).toBe("2");
+    expect(subscriptions["channel.chat.message"].scopes).toEqual([
+      "user:read:chat",
+      "user:bot",
+      "channel:bot",
+    ]);
     expect(subscriptions["stream.online"].scopes).toEqual([]);
   });
 
@@ -30,7 +34,7 @@ describe("EventSub registry", () => {
         message_type: "text",
       });
       expect(event.type).toBe("channel.chat.message");
-      expect(event.version).toBe(1);
+      expect(event.version).toBe("1");
       if (event.type === "channel.chat.message") {
         expect(event.payload.message.text).toBe("hi");
       }
@@ -78,7 +82,7 @@ describe("EventSub registry", () => {
 
   it.effect("fails on unknown types and invalid payloads", () =>
     Effect.gen(function* () {
-      const unknown = yield* Effect.flip(decodeEvent("channel.ban", {}));
+      const unknown = yield* Effect.flip(decodeEvent("channel.unknown", {}));
       expect(unknown._tag).toBe("UnknownSubscriptionType");
       const invalid = yield* Effect.flip(decodeEvent("channel.raid", { viewers: "many" }));
       expect(invalid._tag).toBe("SchemaError");

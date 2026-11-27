@@ -1,0 +1,2183 @@
+[
+  {
+    "type": "automod.message.hold",
+    "version": "2",
+    "condition": {
+      "broadcaster_user_id": "1337",
+      "moderator_user_id": "9001"
+    },
+    "event": {
+      "broadcaster_user_id": "1337",
+      "broadcaster_user_login": "blah",
+      "broadcaster_user_name": "blahblah",
+      "user_id": "4242",
+      "user_login": "baduser",
+      "user_name": "badbaduser",
+      "message_id": "bcd4f4a4-2b6d-4a84-a1d4-e1e5d8c0a6b2",
+      "message": {
+        "text": "This is a bad message… cheer1000",
+        "fragments": [
+          {
+            "type": "text",
+            "text": "This is a bad message… ",
+            "cheermote": null,
+            "emote": null
+          },
+          {
+            "type": "cheermote",
+            "text": "cheer1000",
+            "cheermote": {
+              "prefix": "cheer",
+              "bits": 1000,
+              "tier": 1000
+            },
+            "emote": null
+          }
+        ]
+      },
+      "reason": "automod",
+      "automod": {
+        "category": "aggression",
+        "level": 1,
+        "boundaries": [
+          {
+            "start_pos": 0,
+            "end_pos": 10
+          },
+          {
+            "start_pos": 20,
+            "end_pos": 30
+          }
+        ]
+      },
+      "blocked_term": null,
+      "held_at": "2022-12-02T15:00:00Z"
+    }
+  },
+  {
+    "type": "automod.message.update",
+    "version": "2",
+    "condition": {
+      "broadcaster_user_id": "1337",
+      "moderator_user_id": "9001"
+    },
+    "event": {
+      "broadcaster_user_id": "1337",
+      "broadcaster_user_login": "blah",
+      "broadcaster_user_name": "blahblah",
+      "moderator_user_id": "9001",
+      "moderator_user_login": "the_mod",
+      "moderator_user_name": "The_Mod",
+      "user_id": "4242",
+      "user_login": "baduser",
+      "user_name": "badbaduser",
+      "message_id": "bad-message-id",
+      "message": {
+        "text": "This is a bad message… cheer1000",
+        "fragments": [
+          {
+            "type": "text",
+            "text": "This is a bad message… ",
+            "cheermote": null,
+            "emote": null
+          },
+          {
+            "type": "cheermote",
+            "text": "cheer1000",
+            "cheermote": {
+              "prefix": "cheer",
+              "bits": 1000,
+              "tier": 1000
+            },
+            "emote": null
+          }
+        ]
+      },
+      "reason": "blocked_term",
+      "automod": null,
+      "blocked_term": {
+        "terms_found": [
+          {
+            "term_id": "123",
+            "owner_broadcaster_user_id": "1337",
+            "owner_broadcaster_user_login": "blah",
+            "owner_broadcaster_user_name": "blahblah",
+            "boundary": {
+              "start_pos": 0,
+              "end_pos": 31
+            }
+          }
+        ]
+      },
+      "status": "approved",
+      "held_at": "2022-12-02T15:00:00Z"
+    }
+  },
+  {
+    "type": "automod.settings.update",
+    "version": "1",
+    "condition": {
+      "broadcaster_user_id": "1337",
+      "moderator_user_id": "9001"
+    },
+    "event": {
+      "broadcaster_user_id": "1337",
+      "broadcaster_user_login": "cooluser",
+      "broadcaster_user_name": "CoolUser",
+      "moderator_user_id": "9001",
+      "moderator_user_login": "coolmod",
+      "moderator_user_name": "CoolMod",
+      "bullying": 3,
+      "overall_level": null,
+      "disability": 3,
+      "race_ethnicity_or_religion": 3,
+      "misogyny": 3,
+      "sexuality_sex_or_gender": 3,
+      "aggression": 3,
+      "sex_based_terms": 3,
+      "swearing": 0
+    }
+  },
+  {
+    "type": "automod.terms.update",
+    "version": "1",
+    "condition": {
+      "broadcaster_user_id": "1337",
+      "moderator_user_id": "9001"
+    },
+    "event": {
+      "broadcaster_user_id": "1337",
+      "broadcaster_user_name": "BlahBlah",
+      "broadcaster_user_login": "blahblah",
+      "moderator_user_id": "9001",
+      "moderator_user_login": "the_mod",
+      "moderator_user_name": "The_Mod",
+      "action": "add_blocked",
+      "from_automod": true,
+      "terms": [
+        "automodterm1"
+      ]
+    }
+  },
+  {
+    "type": "channel.ad_break.begin",
+    "version": "1",
+    "condition": {
+      "broadcaster_user_id": "1337"
+    },
+    "event": {
+      "duration_seconds": 60,
+      "started_at": "2019-11-16T10:11:12.634234626Z",
+      "is_automatic": false,
+      "broadcaster_user_id": "1337",
+      "broadcaster_user_login": "cool_user",
+      "broadcaster_user_name": "Cool_User",
+      "requester_user_id": "1337",
+      "requester_user_login": "cool_user",
+      "requester_user_name": "Cool_User"
+    }
+  },
+  {
+    "type": "channel.ban",
+    "version": "1",
+    "condition": {
+      "broadcaster_user_id": "1337"
+    },
+    "event": {
+      "user_id": "1234",
+      "user_login": "cool_user",
+      "user_name": "Cool_User",
+      "broadcaster_user_id": "1337",
+      "broadcaster_user_login": "cooler_user",
+      "broadcaster_user_name": "Cooler_User",
+      "moderator_user_id": "1339",
+      "moderator_user_login": "mod_user",
+      "moderator_user_name": "Mod_User",
+      "reason": "Offensive language",
+      "banned_at": "2020-07-15T18:15:11.17106713Z",
+      "ends_at": "2020-07-15T18:16:11.17106713Z",
+      "is_permanent": false
+    }
+  },
+  {
+    "type": "channel.bits.use",
+    "version": "1",
+    "condition": {
+      "broadcaster_user_id": "1971641"
+    },
+    "event": {
+      "user_id": "1234",
+      "user_login": "cool_user",
+      "user_name": "Cool_User",
+      "broadcaster_user_id": "1337",
+      "broadcaster_user_login": "cooler_user",
+      "broadcaster_user_name": "Cooler_User",
+      "bits": 2,
+      "type": "cheer",
+      "power_up": null,
+      "custom_power_up": null,
+      "message": {
+        "text": "cheer1 hi cheer1",
+        "fragments": [
+          {
+            "type": "cheermote",
+            "text": "cheer1",
+            "cheermote": {
+              "prefix": "cheer",
+              "bits": 1,
+              "tier": 1
+            },
+            "emote": null
+          },
+          {
+            "type": "text",
+            "text": " hi ",
+            "cheermote": null,
+            "emote": null
+          },
+          {
+            "type": "cheermote",
+            "text": "cheer1",
+            "cheermote": {
+              "prefix": "cheer",
+              "bits": 1,
+              "tier": 1
+            },
+            "emote": null
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "channel.channel_points_automatic_reward_redemption.add",
+    "version": "2",
+    "condition": {
+      "broadcaster_user_id": "12826"
+    },
+    "event": {
+      "broadcaster_user_id": "12826",
+      "broadcaster_user_name": "Twitch",
+      "broadcaster_user_login": "twitch",
+      "user_id": "141981764",
+      "user_name": "TwitchDev",
+      "user_login": "twitchdev",
+      "id": "f024099a-e0fe-4339-9a0a-a706fb59f353",
+      "reward": {
+        "type": "send_highlighted_message",
+        "channel_points": 100,
+        "emote": null
+      },
+      "message": {
+        "text": "Hello world! VoHiYo",
+        "fragments": [
+          {
+            "type": "text",
+            "text": "Hello world! ",
+            "emote": null
+          },
+          {
+            "type": "emote",
+            "text": "VoHiYo",
+            "emote": {
+              "id": "81274"
+            }
+          }
+        ]
+      },
+      "redeemed_at": "2024-08-12T21:14:34.260398045Z"
+    }
+  },
+  {
+    "type": "channel.channel_points_custom_reward_redemption.add",
+    "version": "1",
+    "condition": {
+      "broadcaster_user_id": "1337",
+      "reward_id": "92af127c-7326-4483-a52b-b0da0be61c01"
+    },
+    "event": {
+      "id": "17fa2df1-ad76-4804-bfa5-a40ef63efe63",
+      "broadcaster_user_id": "1337",
+      "broadcaster_user_login": "cool_user",
+      "broadcaster_user_name": "Cool_User",
+      "user_id": "9001",
+      "user_login": "cooler_user",
+      "user_name": "Cooler_User",
+      "user_input": "pogchamp",
+      "status": "unfulfilled",
+      "reward": {
+        "id": "92af127c-7326-4483-a52b-b0da0be61c01",
+        "title": "title",
+        "cost": 100,
+        "prompt": "reward prompt"
+      },
+      "redeemed_at": "2020-07-15T17:16:03.17106713Z"
+    }
+  },
+  {
+    "type": "channel.channel_points_custom_reward_redemption.update",
+    "version": "1",
+    "condition": {
+      "broadcaster_user_id": "1337",
+      "reward_id": "92af127c-7326-4483-a52b-b0da0be61c01"
+    },
+    "event": {
+      "id": "17fa2df1-ad76-4804-bfa5-a40ef63efe63",
+      "broadcaster_user_id": "1337",
+      "broadcaster_user_login": "cool_user",
+      "broadcaster_user_name": "Cool_User",
+      "user_id": "9001",
+      "user_login": "cooler_user",
+      "user_name": "Cooler_User",
+      "user_input": "pogchamp",
+      "status": "fulfilled",
+      "reward": {
+        "id": "92af127c-7326-4483-a52b-b0da0be61c01",
+        "title": "title",
+        "cost": 100,
+        "prompt": "reward prompt"
+      },
+      "redeemed_at": "2020-07-15T17:16:03.17106713Z"
+    }
+  },
+  {
+    "type": "channel.channel_points_custom_reward.add",
+    "version": "1",
+    "condition": {
+      "broadcaster_user_id": "1337"
+    },
+    "event": {
+      "id": "afaa7e34-6b17-49f0-a19a-d1e76eaaf673",
+      "broadcaster_user_id": "1337",
+      "broadcaster_user_login": "cool_user",
+      "broadcaster_user_name": "Cool_User",
+      "is_enabled": true,
+      "is_paused": false,
+      "is_in_stock": true,
+      "title": "Cool Reward",
+      "cost": 100,
+      "prompt": "reward prompt",
+      "is_user_input_required": true,
+      "should_redemptions_skip_request_queue": false,
+      "cooldown_expires_at": null,
+      "redemptions_redeemed_current_stream": 0,
+      "max_per_stream": {
+        "is_enabled": true,
+        "value": 1000
+      },
+      "max_per_user_per_stream": {
+        "is_enabled": true,
+        "value": 1000
+      },
+      "global_cooldown": {
+        "is_enabled": true,
+        "seconds": 1000
+      },
+      "background_color": "#FA1ED2",
+      "image": null,
+      "default_image": {
+        "url_1x": "https://static-cdn.jtvnw.net/custom-reward-images/default-1.png",
+        "url_2x": "https://static-cdn.jtvnw.net/custom-reward-images/default-2.png",
+        "url_4x": "https://static-cdn.jtvnw.net/custom-reward-images/default-4.png"
+      }
+    }
+  },
+  {
+    "type": "channel.channel_points_custom_reward.remove",
+    "version": "1",
+    "condition": {
+      "broadcaster_user_id": "1337",
+      "reward_id": "92af127c-7326-4483-a52b-b0da0be61c01"
+    },
+    "event": {
+      "id": "92af127c-7326-4483-a52b-b0da0be61c01",
+      "broadcaster_user_id": "1337",
+      "broadcaster_user_login": "cool_user",
+      "broadcaster_user_name": "Cool_User",
+      "is_enabled": true,
+      "is_paused": false,
+      "is_in_stock": false,
+      "title": "Cool Reward",
+      "cost": 100,
+      "prompt": "reward prompt",
+      "is_user_input_required": true,
+      "should_redemptions_skip_request_queue": false,
+      "cooldown_expires_at": "2019-11-16T10:16:12Z",
+      "redemptions_redeemed_current_stream": 123,
+      "max_per_stream": {
+        "is_enabled": true,
+        "value": 1000
+      },
+      "max_per_user_per_stream": {
+        "is_enabled": true,
+        "value": 1000
+      },
+      "global_cooldown": {
+        "is_enabled": true,
+        "seconds": 1000
+      },
+      "background_color": "#FA1ED2",
+      "image": {
+        "url_1x": "https://static-cdn.jtvnw.net/image-1.png",
+        "url_2x": "https://static-cdn.jtvnw.net/image-2.png",
+        "url_4x": "https://static-cdn.jtvnw.net/image-4.png"
+      },
+      "default_image": {
+        "url_1x": "https://static-cdn.jtvnw.net/default-1.png",
+        "url_2x": "https://static-cdn.jtvnw.net/default-2.png",
+        "url_4x": "https://static-cdn.jtvnw.net/default-4.png"
+      }
+    }
+  },
+  {
+    "type": "channel.channel_points_custom_reward.update",
+    "version": "1",
+    "condition": {
+      "broadcaster_user_id": "1337",
+      "reward_id": "92af127c-7326-4483-a52b-b0da0be61c01"
+    },
+    "event": {
+      "id": "92af127c-7326-4483-a52b-b0da0be61c01",
+      "broadcaster_user_id": "1337",
+      "broadcaster_user_login": "cool_user",
+      "broadcaster_user_name": "Cool_User",
+      "is_enabled": true,
+      "is_paused": false,
+      "is_in_stock": false,
+      "title": "Cool Reward",
+      "cost": 100,
+      "prompt": "reward prompt",
+      "is_user_input_required": true,
+      "should_redemptions_skip_request_queue": false,
+      "cooldown_expires_at": "2019-11-16T10:16:12Z",
+      "redemptions_redeemed_current_stream": 123,
+      "max_per_stream": {
+        "is_enabled": true,
+        "value": 1000
+      },
+      "max_per_user_per_stream": {
+        "is_enabled": true,
+        "value": 1000
+      },
+      "global_cooldown": {
+        "is_enabled": true,
+        "seconds": 1000
+      },
+      "background_color": "#FA1ED2",
+      "image": {
+        "url_1x": "https://static-cdn.jtvnw.net/image-1.png",
+        "url_2x": "https://static-cdn.jtvnw.net/image-2.png",
+        "url_4x": "https://static-cdn.jtvnw.net/image-4.png"
+      },
+      "default_image": {
+        "url_1x": "https://static-cdn.jtvnw.net/default-1.png",
+        "url_2x": "https://static-cdn.jtvnw.net/default-2.png",
+        "url_4x": "https://static-cdn.jtvnw.net/default-4.png"
+      }
+    }
+  },
+  {
+    "type": "channel.charity_campaign.donate",
+    "version": "1",
+    "condition": {
+      "broadcaster_user_id": "123456"
+    },
+    "event": {
+      "id": "2DQ5PyjPHh28hVu4jvFq8gIsPqL-654321-2022-07-25T10:11:12Z",
+      "campaign_id": "2DQ5PyjPHh28hVu4jvFq8gIsPqL",
+      "broadcaster_user_id": "123456",
+      "broadcaster_user_name": "SunnySideUp",
+      "broadcaster_user_login": "sunnysideup",
+      "user_id": "654321",
+      "user_login": "generoususer1",
+      "user_name": "GenerousUser1",
+      "charity_name": "Example name",
+      "charity_description": "Example description",
+      "charity_logo": "https://abc.cloudfront.net/ppgf/1000/100.png",
+      "charity_website": "https://www.example.com",
+      "amount": {
+        "value": 10000,
+        "decimal_places": 2,
+        "currency": "USD"
+      }
+    }
+  },
+  {
+    "type": "channel.charity_campaign.progress",
+    "version": "1",
+    "condition": {
+      "broadcaster_user_id": "123456"
+    },
+    "event": {
+      "id": "2DQ5PyjPHh28hVu4jvFq8gIsPqL",
+      "broadcaster_user_id": "123456",
+      "broadcaster_user_name": "SunnySideUp",
+      "broadcaster_user_login": "sunnysideup",
+      "charity_name": "Example name",
+      "charity_description": "Example description",
+      "charity_logo": "https://abc.cloudfront.net/ppgf/1000/100.png",
+      "charity_website": "https://www.example.com",
+      "current_amount": {
+        "value": 260000,
+        "decimal_places": 2,
+        "currency": "USD"
+      },
+      "target_amount": {
+        "value": 1500000,
+        "decimal_places": 2,
+        "currency": "USD"
+      }
+    }
+  },
+  {
+    "type": "channel.charity_campaign.start",
+    "version": "1",
+    "condition": {
+      "broadcaster_user_id": "123456"
+    },
+    "event": {
+      "id": "123-abc-456-def",
+      "broadcaster_user_id": "123456",
+      "broadcaster_user_name": "SunnySideUp",
+      "broadcaster_user_login": "sunnysideup",
+      "charity_name": "Example name",
+      "charity_description": "Example description",
+      "charity_logo": "https://abc.cloudfront.net/ppgf/1000/100.png",
+      "charity_website": "https://www.example.com",
+      "current_amount": {
+        "value": 0,
+        "decimal_places": 2,
+        "currency": "USD"
+      },
+      "target_amount": {
+        "value": 1500000,
+        "decimal_places": 2,
+        "currency": "USD"
+      },
+      "started_at": "2022-07-26T17:00:03.17106713Z"
+    }
+  },
+  {
+    "type": "channel.charity_campaign.stop",
+    "version": "1",
+    "condition": {
+      "broadcaster_user_id": "123456"
+    },
+    "event": {
+      "id": "2DQ5PyjPHh28hVu4jvFq8gIsPqL",
+      "broadcaster_user_id": "123456",
+      "broadcaster_user_name": "SunnySideUp",
+      "broadcaster_user_login": "sunnysideup",
+      "charity_name": "Example name",
+      "charity_description": "Example description",
+      "charity_logo": "https://abc.cloudfront.net/ppgf/1000/100.png",
+      "charity_website": "https://www.example.com",
+      "current_amount": {
+        "value": 1450000,
+        "decimal_places": 2,
+        "currency": "USD"
+      },
+      "target_amount": {
+        "value": 1500000,
+        "decimal_places": 2,
+        "currency": "USD"
+      },
+      "stopped_at": "2022-07-26T22:00:03.17106713Z"
+    }
+  },
+  {
+    "type": "channel.chat_settings.update",
+    "version": "1",
+    "condition": {
+      "broadcaster_user_id": "1337",
+      "user_id": "9001"
+    },
+    "event": {
+      "broadcaster_user_id": "1337",
+      "broadcaster_user_login": "cool_user",
+      "broadcaster_user_name": "Cool_User",
+      "emote_mode": true,
+      "follower_mode": false,
+      "follower_mode_duration_minutes": null,
+      "slow_mode": true,
+      "slow_mode_wait_time_seconds": 10,
+      "subscriber_mode": false,
+      "unique_chat_mode": false
+    }
+  },
+  {
+    "type": "channel.chat.clear",
+    "version": "1",
+    "condition": {
+      "broadcaster_user_id": "1337",
+      "user_id": "9001"
+    },
+    "event": {
+      "broadcaster_user_id": "1337",
+      "broadcaster_user_name": "Cool_User",
+      "broadcaster_user_login": "cool_user"
+    }
+  },
+  {
+    "type": "channel.chat.clear_user_messages",
+    "version": "1",
+    "condition": {
+      "broadcaster_user_id": "1337",
+      "user_id": "9001"
+    },
+    "event": {
+      "broadcaster_user_id": "1337",
+      "broadcaster_user_name": "Cool_User",
+      "broadcaster_user_login": "cool_user",
+      "target_user_id": "7734",
+      "target_user_name": "Uncool_viewer",
+      "target_user_login": "uncool_viewer"
+    }
+  },
+  {
+    "type": "channel.chat.message",
+    "version": "1",
+    "condition": {
+      "broadcaster_user_id": "1337",
+      "user_id": "9001"
+    },
+    "event": {
+      "broadcaster_user_id": "1971641",
+      "broadcaster_user_login": "streamer",
+      "broadcaster_user_name": "streamer",
+      "chatter_user_id": "4145994",
+      "chatter_user_login": "viewer32",
+      "chatter_user_name": "viewer32",
+      "message_id": "cc106a89-1814-919d-454c-f4f2f970aae7",
+      "message": {
+        "text": "Hi chat",
+        "fragments": [
+          {
+            "type": "text",
+            "text": "Hi chat",
+            "cheermote": null,
+            "emote": null,
+            "mention": null,
+            "gif": null
+          }
+        ]
+      },
+      "color": "#00FF7F",
+      "badges": [
+        {
+          "set_id": "moderator",
+          "id": "1",
+          "info": ""
+        },
+        {
+          "set_id": "subscriber",
+          "id": "12",
+          "info": "16"
+        },
+        {
+          "set_id": "sub-gifter",
+          "id": "1",
+          "info": ""
+        }
+      ],
+      "message_type": "text",
+      "cheer": null,
+      "reply": null,
+      "channel_points_custom_reward_id": null,
+      "channel_points_animation_id": null,
+      "source_broadcaster_user_id": null,
+      "source_broadcaster_user_login": null,
+      "source_broadcaster_user_name": null,
+      "source_message_id": null,
+      "source_badges": null,
+      "is_source_only": null
+    }
+  },
+  {
+    "type": "channel.chat.message_delete",
+    "version": "1",
+    "condition": {
+      "broadcaster_user_id": "1337",
+      "user_id": "9001"
+    },
+    "event": {
+      "broadcaster_user_id": "1337",
+      "broadcaster_user_name": "Cool_User",
+      "broadcaster_user_login": "cool_user",
+      "target_user_id": "7734",
+      "target_user_name": "Uncool_viewer",
+      "target_user_login": "uncool_viewer",
+      "message_id": "ab24e0b0-2260-4bac-94e4-05eedd4ecd0e"
+    }
+  },
+  {
+    "type": "channel.chat.notification",
+    "version": "1",
+    "condition": {
+      "broadcaster_user_id": "1971641",
+      "user_id": "2914196"
+    },
+    "event": {
+      "broadcaster_user_id": "1971641",
+      "broadcaster_user_login": "streamer",
+      "broadcaster_user_name": "streamer",
+      "chatter_user_id": "49912639",
+      "chatter_user_login": "viewer23",
+      "chatter_user_name": "viewer23",
+      "chatter_is_anonymous": false,
+      "color": "",
+      "badges": [],
+      "system_message": "viewer23 subscribed at Tier 1. They've subscribed for 10 months!",
+      "message_id": "d62235c8-47ff-a4f4-84e8-5a29a65a9c03",
+      "message": {
+        "text": "",
+        "fragments": []
+      },
+      "notice_type": "resub",
+      "sub": null,
+      "resub": {
+        "cumulative_months": 10,
+        "duration_months": 0,
+        "streak_months": null,
+        "sub_tier": "1000",
+        "is_prime": false,
+        "is_gift": false,
+        "gifter_is_anonymous": null,
+        "gifter_user_id": null,
+        "gifter_user_name": null,
+        "gifter_user_login": null
+      },
+      "sub_gift": null,
+      "community_sub_gift": null,
+      "gift_paid_upgrade": null,
+      "prime_paid_upgrade": null,
+      "pay_it_forward": null,
+      "raid": null,
+      "unraid": null,
+      "announcement": null,
+      "bits_badge_tier": null,
+      "charity_donation": null,
+      "watch_streak": null,
+      "modiversary": null,
+      "gifted_drops_summary": null,
+      "shared_chat_sub": null,
+      "shared_chat_resub": null,
+      "shared_chat_sub_gift": null,
+      "shared_chat_community_sub_gift": null,
+      "shared_chat_gift_paid_upgrade": null,
+      "shared_chat_prime_paid_upgrade": null,
+      "shared_chat_pay_it_forward": null,
+      "shared_chat_raid": null,
+      "shared_chat_announcement": null,
+      "shared_chat_modiversary": null,
+      "shared_chat_gifted_drops_summary": null,
+      "source_broadcaster_user_id": null,
+      "source_broadcaster_user_login": null,
+      "source_broadcaster_user_name": null,
+      "source_message_id": null,
+      "source_badges": null,
+      "is_source_only": null
+    }
+  },
+  {
+    "type": "channel.chat.user_message_hold",
+    "version": "1",
+    "condition": {
+      "broadcaster_user_id": "1337",
+      "user_id": "9001"
+    },
+    "event": {
+      "broadcaster_user_id": "1337",
+      "broadcaster_user_login": "cool_user",
+      "broadcaster_user_name": "Cool_User",
+      "user_id": "9001",
+      "user_login": "cooler_user",
+      "user_name": "Cooler_User",
+      "message_id": "789",
+      "message": {
+        "text": "Kappa hi cheer100",
+        "fragments": [
+          {
+            "type": "emote",
+            "text": "Kappa",
+            "cheermote": null,
+            "emote": {
+              "id": "25",
+              "emote_set_id": "0"
+            }
+          },
+          {
+            "type": "text",
+            "text": " hi ",
+            "cheermote": null,
+            "emote": null
+          },
+          {
+            "type": "cheermote",
+            "text": "cheer100",
+            "cheermote": {
+              "prefix": "cheer",
+              "bits": 100,
+              "tier": 100
+            },
+            "emote": null
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "channel.chat.user_message_update",
+    "version": "1",
+    "condition": {
+      "broadcaster_user_id": "1337",
+      "user_id": "9001"
+    },
+    "event": {
+      "broadcaster_user_id": "1337",
+      "broadcaster_user_login": "cool_user",
+      "broadcaster_user_name": "Cool_User",
+      "user_id": "9001",
+      "user_login": "cooler_user",
+      "user_name": "Cooler_User",
+      "status": "approved",
+      "message_id": "789",
+      "message": {
+        "text": "Kappa cheer100 surprise",
+        "fragments": [
+          {
+            "type": "emote",
+            "text": "Kappa",
+            "cheermote": null,
+            "emote": {
+              "id": "25",
+              "emote_set_id": "0"
+            }
+          },
+          {
+            "type": "text",
+            "text": " ",
+            "cheermote": null,
+            "emote": null
+          },
+          {
+            "type": "cheermote",
+            "text": "cheer100",
+            "cheermote": {
+              "prefix": "cheer",
+              "bits": 100,
+              "tier": 100
+            },
+            "emote": null
+          },
+          {
+            "type": "text",
+            "text": " surprise",
+            "cheermote": null,
+            "emote": null
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "channel.cheer",
+    "version": "1",
+    "condition": {
+      "broadcaster_user_id": "1337"
+    },
+    "event": {
+      "is_anonymous": false,
+      "user_id": "1234",
+      "user_login": "cool_user",
+      "user_name": "Cool_User",
+      "broadcaster_user_id": "1337",
+      "broadcaster_user_login": "cooler_user",
+      "broadcaster_user_name": "Cooler_User",
+      "message": "Cheer1000 pogchamp",
+      "bits": 1000
+    }
+  },
+  {
+    "type": "channel.custom_power_up_redemption.add",
+    "version": "1",
+    "condition": {
+      "broadcaster_user_id": "1337",
+      "reward_id": "92af127c-7326-4483-a52b-b0da0be61c01"
+    },
+    "event": {
+      "id": "17fa2df1-ad76-4804-bfa5-a40ef63efe63",
+      "broadcaster_user_id": "1337",
+      "broadcaster_user_login": "cool_user",
+      "broadcaster_user_name": "Cool_User",
+      "user_id": "9001",
+      "user_login": "cooler_user",
+      "user_name": "Cooler_User",
+      "user_input": "pogchamp",
+      "status": "fulfilled",
+      "custom_power_up": {
+        "id": "92af127c-7326-4483-a52b-b0da0be61c01",
+        "title": "title",
+        "bits": 100,
+        "prompt": "Power-up prompt"
+      },
+      "redeemed_at": "2026-05-01T17:16:03.17106713Z"
+    }
+  },
+  {
+    "type": "channel.follow",
+    "version": "2",
+    "condition": {
+      "broadcaster_user_id": "1337",
+      "moderator_user_id": "1337"
+    },
+    "event": {
+      "user_id": "1234",
+      "user_login": "cool_user",
+      "user_name": "Cool_User",
+      "broadcaster_user_id": "1337",
+      "broadcaster_user_login": "cooler_user",
+      "broadcaster_user_name": "Cooler_User",
+      "followed_at": "2020-07-15T18:16:11.17106713Z"
+    }
+  },
+  {
+    "type": "channel.goal.begin",
+    "version": "1",
+    "condition": {
+      "broadcaster_user_id": "141981764"
+    },
+    "event": {
+      "id": "1woowvbkiNv8BRxEWSqmQz6Zk92",
+      "broadcaster_user_id": "141981764",
+      "broadcaster_user_name": "TwitchDev",
+      "broadcaster_user_login": "twitchdev",
+      "type": "subscription",
+      "description": "Help me get partner!",
+      "current_amount": 100,
+      "target_amount": 220,
+      "started_at": "2021-07-15T17:16:03.17106713Z"
+    }
+  },
+  {
+    "type": "channel.goal.end",
+    "version": "1",
+    "condition": {
+      "broadcaster_user_id": "141981764"
+    },
+    "event": {
+      "id": "1woowvbkiNv8BRxEWSqmQz6Zk92",
+      "broadcaster_user_id": "141981764",
+      "broadcaster_user_name": "TwitchDev",
+      "broadcaster_user_login": "twitchdev",
+      "type": "subscription",
+      "description": "Help me get partner!",
+      "is_achieved": false,
+      "current_amount": 180,
+      "target_amount": 220,
+      "started_at": "2021-07-15T17:16:03.17106713Z",
+      "ended_at": "2021-07-16T17:16:03.17106713Z"
+    }
+  },
+  {
+    "type": "channel.goal.progress",
+    "version": "1",
+    "condition": {
+      "broadcaster_user_id": "141981764"
+    },
+    "event": {
+      "id": "1woowvbkiNv8BRxEWSqmQz6Zk92",
+      "broadcaster_user_id": "141981764",
+      "broadcaster_user_name": "TwitchDev",
+      "broadcaster_user_login": "twitchdev",
+      "type": "subscription",
+      "description": "Help me get partner!",
+      "current_amount": 120,
+      "target_amount": 220,
+      "started_at": "2021-07-15T17:16:03.17106713Z"
+    }
+  },
+  {
+    "type": "channel.guest_star_guest.update",
+    "version": "beta",
+    "condition": {
+      "broadcaster_user_id": "1337",
+      "moderator_user_id": "1312"
+    },
+    "event": {
+      "broadcaster_user_id": "1337",
+      "broadcaster_user_name": "Cool_User",
+      "broadcaster_user_login": "cool_user",
+      "session_id": "2KFRQbFtpmfyD3IevNRnCzOPRJI",
+      "moderator_user_id": "1312",
+      "moderator_user_name": "Cool_Mod",
+      "moderator_user_login": "cool_mod",
+      "guest_user_id": "1234",
+      "guest_user_name": "Cool_Guest",
+      "guest_user_login": "cool_guest",
+      "slot_id": "1",
+      "state": "live",
+      "host_user_id": "1337",
+      "host_user_name": "Cool_User",
+      "host_user_login": "cool_user",
+      "host_video_enabled": true,
+      "host_audio_enabled": true,
+      "host_volume": 100
+    }
+  },
+  {
+    "type": "channel.guest_star_session.begin",
+    "version": "beta",
+    "condition": {
+      "broadcaster_user_id": "1337",
+      "moderator_user_id": "1338"
+    },
+    "event": {
+      "broadcaster_user_id": "1337",
+      "broadcaster_user_name": "Cool_User",
+      "broadcaster_user_login": "cool_user",
+      "session_id": "2KFRQbFtpmfyD3IevNRnCzOPRJI",
+      "started_at": "2023-04-11T16:20:03.17106713Z"
+    }
+  },
+  {
+    "type": "channel.guest_star_session.end",
+    "version": "beta",
+    "condition": {
+      "broadcaster_user_id": "1337",
+      "moderator_user_id": "1338"
+    },
+    "event": {
+      "broadcaster_user_id": "1337",
+      "broadcaster_user_name": "Cool_User",
+      "broadcaster_user_login": "cool_user",
+      "session_id": "2KFRQbFtpmfyD3IevNRnCzOPRJI",
+      "started_at": "2023-04-11T16:20:03.17106713Z",
+      "ended_at": "2023-04-11T17:51:29.153485Z",
+      "host_user_id": "141981764",
+      "host_user_login": "twitchdev",
+      "host_user_name": "TwitchDev"
+    }
+  },
+  {
+    "type": "channel.guest_star_settings.update",
+    "version": "beta",
+    "condition": {
+      "broadcaster_user_id": "1337",
+      "moderator_user_id": "1312"
+    },
+    "event": {
+      "broadcaster_user_id": "1337",
+      "broadcaster_user_name": "Cool_User",
+      "broadcaster_user_login": "cool_user",
+      "is_moderator_send_live_enabled": true,
+      "slot_count": 5,
+      "is_browser_source_audio_enabled": true,
+      "group_layout": "tiled"
+    }
+  },
+  {
+    "type": "channel.hype_train.begin",
+    "version": "2",
+    "condition": {
+      "broadcaster_user_id": "1337"
+    },
+    "event": {
+      "id": "1b0f8c2e-3d4a-4f6b-9c7d-2e5a8b1c4d3f",
+      "broadcaster_user_id": "1337",
+      "broadcaster_user_login": "cool_user",
+      "broadcaster_user_name": "Cool_User",
+      "total": 137,
+      "progress": 137,
+      "goal": 500,
+      "top_contributions": [
+        {
+          "user_id": "123",
+          "user_login": "pogchamp",
+          "user_name": "PogChamp",
+          "type": "bits",
+          "total": 50
+        }
+      ],
+      "shared_train_participants": null,
+      "level": 1,
+      "started_at": "2020-07-15T17:16:03.17106713Z",
+      "expires_at": "2020-07-15T17:21:03.17106713Z",
+      "is_shared_train": false,
+      "type": "regular",
+      "all_time_high_level": 4,
+      "all_time_high_total": 2845
+    }
+  },
+  {
+    "type": "channel.hype_train.end",
+    "version": "2",
+    "condition": {
+      "broadcaster_user_id": "1337"
+    },
+    "event": {
+      "id": "1b0f8c2e-3d4a-4f6b-9c7d-2e5a8b1c4d3f",
+      "broadcaster_user_id": "1337",
+      "broadcaster_user_login": "cool_user",
+      "broadcaster_user_name": "Cool_User",
+      "total": 137,
+      "top_contributions": [
+        {
+          "user_id": "123",
+          "user_login": "pogchamp",
+          "user_name": "PogChamp",
+          "type": "bits",
+          "total": 50
+        }
+      ],
+      "shared_train_participants": null,
+      "level": 1,
+      "started_at": "2020-07-15T17:16:03.17106713Z",
+      "ended_at": "2020-07-15T17:21:03.17106713Z",
+      "cooldown_ends_at": "2020-07-15T19:21:03.17106713Z",
+      "is_shared_train": false,
+      "type": "regular"
+    }
+  },
+  {
+    "type": "channel.hype_train.progress",
+    "version": "2",
+    "condition": {
+      "broadcaster_user_id": "1337"
+    },
+    "event": {
+      "id": "1b0f8c2e-3d4a-4f6b-9c7d-2e5a8b1c4d3f",
+      "broadcaster_user_id": "1337",
+      "broadcaster_user_login": "cool_user",
+      "broadcaster_user_name": "Cool_User",
+      "total": 137,
+      "progress": 137,
+      "goal": 500,
+      "top_contributions": [
+        {
+          "user_id": "123",
+          "user_login": "pogchamp",
+          "user_name": "PogChamp",
+          "type": "bits",
+          "total": 50
+        }
+      ],
+      "shared_train_participants": null,
+      "level": 1,
+      "started_at": "2020-07-15T17:16:03.17106713Z",
+      "expires_at": "2020-07-15T17:16:11.17106713Z",
+      "is_shared_train": false,
+      "type": "regular"
+    }
+  },
+  {
+    "type": "channel.moderate",
+    "version": "2",
+    "condition": {
+      "broadcaster_user_id": "423374343",
+      "moderator_user_id": "424596340"
+    },
+    "event": {
+      "broadcaster_user_id": "423374343",
+      "broadcaster_user_login": "glowillig",
+      "broadcaster_user_name": "glowillig",
+      "source_broadcaster_user_id": null,
+      "source_broadcaster_user_login": null,
+      "source_broadcaster_user_name": null,
+      "moderator_user_id": "424596340",
+      "moderator_user_login": "quotrok",
+      "moderator_user_name": "quotrok",
+      "action": "warn",
+      "followers": null,
+      "slow": null,
+      "vip": null,
+      "unvip": null,
+      "warn": {
+        "user_id": "141981764",
+        "user_login": "twitchdev",
+        "user_name": "TwitchDev",
+        "reason": "cut it out",
+        "chat_rules_cited": null
+      },
+      "mod": null,
+      "unmod": null,
+      "ban": null,
+      "unban": null,
+      "timeout": null,
+      "untimeout": null,
+      "raid": null,
+      "unraid": null,
+      "delete": null,
+      "automod_terms": null,
+      "unban_request": null,
+      "shared_chat_ban": null,
+      "shared_chat_unban": null,
+      "shared_chat_timeout": null,
+      "shared_chat_untimeout": null,
+      "shared_chat_delete": null
+    }
+  },
+  {
+    "type": "channel.moderator.add",
+    "version": "1",
+    "condition": {
+      "broadcaster_user_id": "1337"
+    },
+    "event": {
+      "user_id": "1234",
+      "user_login": "mod_user",
+      "user_name": "Mod_User",
+      "broadcaster_user_id": "1337",
+      "broadcaster_user_login": "cooler_user",
+      "broadcaster_user_name": "Cooler_User"
+    }
+  },
+  {
+    "type": "channel.moderator.remove",
+    "version": "1",
+    "condition": {
+      "broadcaster_user_id": "1337"
+    },
+    "event": {
+      "user_id": "1234",
+      "user_login": "not_mod_user",
+      "user_name": "Not_Mod_User",
+      "broadcaster_user_id": "1337",
+      "broadcaster_user_login": "cooler_user",
+      "broadcaster_user_name": "Cooler_User"
+    }
+  },
+  {
+    "type": "channel.poll.begin",
+    "version": "1",
+    "condition": {
+      "broadcaster_user_id": "1337"
+    },
+    "event": {
+      "id": "ed961efd-8a3f-4cf5-a9d0-e616c590cd2a",
+      "broadcaster_user_id": "1337",
+      "broadcaster_user_login": "cool_user",
+      "broadcaster_user_name": "Cool_User",
+      "title": "Aren't shoes just really hard socks?",
+      "choices": [
+        {
+          "id": "4c123012-1351-4f33-84b7-43856e7a0f47",
+          "title": "Yeah!"
+        },
+        {
+          "id": "279087e3-54a7-467e-bcd0-c1393fcea4f0",
+          "title": "No!"
+        },
+        {
+          "id": "6b3f3b44-2c4f-4f4e-9f63-1d0a4f6c2b9e",
+          "title": "Maybe!"
+        }
+      ],
+      "bits_voting": {
+        "is_enabled": false,
+        "amount_per_vote": 0
+      },
+      "channel_points_voting": {
+        "is_enabled": true,
+        "amount_per_vote": 10
+      },
+      "started_at": "2020-07-15T17:16:03.17106713Z",
+      "ends_at": "2020-07-15T17:21:03.17106713Z"
+    }
+  },
+  {
+    "type": "channel.poll.end",
+    "version": "1",
+    "condition": {
+      "broadcaster_user_id": "1337"
+    },
+    "event": {
+      "id": "ed961efd-8a3f-4cf5-a9d0-e616c590cd2a",
+      "broadcaster_user_id": "1337",
+      "broadcaster_user_login": "cool_user",
+      "broadcaster_user_name": "Cool_User",
+      "title": "Aren't shoes just really hard socks?",
+      "choices": [
+        {
+          "id": "4c123012-1351-4f33-84b7-43856e7a0f47",
+          "title": "Blue",
+          "bits_votes": 0,
+          "channel_points_votes": 70,
+          "votes": 120
+        },
+        {
+          "id": "279087e3-54a7-467e-bcd0-c1393fcea4f0",
+          "title": "Yellow",
+          "bits_votes": 0,
+          "channel_points_votes": 40,
+          "votes": 140
+        },
+        {
+          "id": "6b3f3b44-2c4f-4f4e-9f63-1d0a4f6c2b9e",
+          "title": "Green",
+          "bits_votes": 0,
+          "channel_points_votes": 70,
+          "votes": 80
+        }
+      ],
+      "bits_voting": {
+        "is_enabled": false,
+        "amount_per_vote": 0
+      },
+      "channel_points_voting": {
+        "is_enabled": true,
+        "amount_per_vote": 10
+      },
+      "status": "completed",
+      "started_at": "2020-07-15T17:16:03.17106713Z",
+      "ended_at": "2020-07-15T17:21:03.17106713Z"
+    }
+  },
+  {
+    "type": "channel.poll.progress",
+    "version": "1",
+    "condition": {
+      "broadcaster_user_id": "1337"
+    },
+    "event": {
+      "id": "ed961efd-8a3f-4cf5-a9d0-e616c590cd2a",
+      "broadcaster_user_id": "1337",
+      "broadcaster_user_login": "cool_user",
+      "broadcaster_user_name": "Cool_User",
+      "title": "Aren't shoes just really hard socks?",
+      "choices": [
+        {
+          "id": "4c123012-1351-4f33-84b7-43856e7a0f47",
+          "title": "Yeah!",
+          "bits_votes": 0,
+          "channel_points_votes": 7,
+          "votes": 12
+        },
+        {
+          "id": "279087e3-54a7-467e-bcd0-c1393fcea4f0",
+          "title": "No!",
+          "bits_votes": 0,
+          "channel_points_votes": 4,
+          "votes": 14
+        },
+        {
+          "id": "6b3f3b44-2c4f-4f4e-9f63-1d0a4f6c2b9e",
+          "title": "Maybe!",
+          "bits_votes": 0,
+          "channel_points_votes": 7,
+          "votes": 9
+        }
+      ],
+      "bits_voting": {
+        "is_enabled": false,
+        "amount_per_vote": 0
+      },
+      "channel_points_voting": {
+        "is_enabled": true,
+        "amount_per_vote": 10
+      },
+      "started_at": "2020-07-15T17:16:03.17106713Z",
+      "ends_at": "2020-07-15T17:21:03.17106713Z"
+    }
+  },
+  {
+    "type": "channel.prediction.begin",
+    "version": "1",
+    "condition": {
+      "broadcaster_user_id": "1337"
+    },
+    "event": {
+      "id": "bc637af0-7766-4525-9308-4112f4cbf178",
+      "broadcaster_user_id": "1337",
+      "broadcaster_user_login": "cool_user",
+      "broadcaster_user_name": "Cool_User",
+      "title": "Aren't shoes just really hard socks?",
+      "outcomes": [
+        {
+          "id": "73085848-a94d-4040-9d21-2cb7a89374b7",
+          "title": "Yeah!",
+          "color": "blue"
+        },
+        {
+          "id": "906b70ba-1f12-47ea-9e95-e5f93d20e9cc",
+          "title": "No!",
+          "color": "pink"
+        }
+      ],
+      "started_at": "2020-07-15T17:16:03.17106713Z",
+      "locks_at": "2020-07-15T17:21:03.17106713Z"
+    }
+  },
+  {
+    "type": "channel.prediction.end",
+    "version": "1",
+    "condition": {
+      "broadcaster_user_id": "1337"
+    },
+    "event": {
+      "id": "1243456",
+      "broadcaster_user_id": "1337",
+      "broadcaster_user_login": "cool_user",
+      "broadcaster_user_name": "Cool_User",
+      "title": "Aren't shoes just really hard socks?",
+      "winning_outcome_id": "12345",
+      "outcomes": [
+        {
+          "id": "12345",
+          "title": "Yeah!",
+          "color": "blue",
+          "users": 2,
+          "channel_points": 600,
+          "top_predictors": [
+            {
+              "user_name": "Cool_User",
+              "user_login": "cool_user",
+              "user_id": "1234",
+              "channel_points_won": 667,
+              "channel_points_used": 500
+            },
+            {
+              "user_name": "Coolest_User",
+              "user_login": "coolest_user",
+              "user_id": "1236",
+              "channel_points_won": 133,
+              "channel_points_used": 100
+            }
+          ]
+        },
+        {
+          "id": "22435",
+          "title": "No!",
+          "users": 2,
+          "channel_points": 200,
+          "color": "pink",
+          "top_predictors": [
+            {
+              "user_name": "Cooler_User",
+              "user_login": "cooler_user",
+              "user_id": "12345",
+              "channel_points_won": 0,
+              "channel_points_used": 100
+            },
+            {
+              "user_name": "Elite_User",
+              "user_login": "elite_user",
+              "user_id": "1337",
+              "channel_points_won": 0,
+              "channel_points_used": 100
+            }
+          ]
+        }
+      ],
+      "status": "resolved",
+      "started_at": "2020-07-15T17:16:03.17106713Z",
+      "ended_at": "2020-07-15T17:16:11.17106713Z"
+    }
+  },
+  {
+    "type": "channel.prediction.lock",
+    "version": "1",
+    "condition": {
+      "broadcaster_user_id": "1337"
+    },
+    "event": {
+      "id": "bc637af0-7766-4525-9308-4112f4cbf178",
+      "broadcaster_user_id": "1337",
+      "broadcaster_user_login": "cool_user",
+      "broadcaster_user_name": "Cool_User",
+      "title": "Aren't shoes just really hard socks?",
+      "outcomes": [
+        {
+          "id": "73085848-a94d-4040-9d21-2cb7a89374b7",
+          "title": "Yeah!",
+          "color": "blue",
+          "users": 2,
+          "channel_points": 700,
+          "top_predictors": [
+            {
+              "user_name": "Cool_Viewer",
+              "user_login": "cool_viewer",
+              "user_id": "1234",
+              "channel_points_won": null,
+              "channel_points_used": 500
+            },
+            {
+              "user_name": "Coolest_User",
+              "user_login": "coolest_user",
+              "user_id": "1236",
+              "channel_points_won": null,
+              "channel_points_used": 200
+            }
+          ]
+        },
+        {
+          "id": "906b70ba-1f12-47ea-9e95-e5f93d20e9cc",
+          "title": "No!",
+          "color": "pink",
+          "users": 1,
+          "channel_points": 5000,
+          "top_predictors": [
+            {
+              "user_name": "Cooler_User",
+              "user_login": "cooler_user",
+              "user_id": "12345",
+              "channel_points_won": null,
+              "channel_points_used": 5000
+            }
+          ]
+        }
+      ],
+      "started_at": "2020-07-15T17:16:03.17106713Z",
+      "locked_at": "2020-07-15T17:21:03.17106713Z"
+    }
+  },
+  {
+    "type": "channel.prediction.progress",
+    "version": "1",
+    "condition": {
+      "broadcaster_user_id": "1337"
+    },
+    "event": {
+      "id": "bc637af0-7766-4525-9308-4112f4cbf178",
+      "broadcaster_user_id": "1337",
+      "broadcaster_user_login": "cool_user",
+      "broadcaster_user_name": "Cool_User",
+      "title": "Aren't shoes just really hard socks?",
+      "outcomes": [
+        {
+          "id": "73085848-a94d-4040-9d21-2cb7a89374b7",
+          "title": "Yeah!",
+          "color": "blue",
+          "users": 2,
+          "channel_points": 700,
+          "top_predictors": [
+            {
+              "user_name": "Cool_Viewer",
+              "user_login": "cool_viewer",
+              "user_id": "1234",
+              "channel_points_won": null,
+              "channel_points_used": 500
+            },
+            {
+              "user_name": "Coolest_User",
+              "user_login": "coolest_user",
+              "user_id": "1236",
+              "channel_points_won": null,
+              "channel_points_used": 200
+            }
+          ]
+        },
+        {
+          "id": "906b70ba-1f12-47ea-9e95-e5f93d20e9cc",
+          "title": "No!",
+          "color": "pink",
+          "users": 1,
+          "channel_points": 5000,
+          "top_predictors": [
+            {
+              "user_name": "Cooler_User",
+              "user_login": "cooler_user",
+              "user_id": "12345",
+              "channel_points_won": null,
+              "channel_points_used": 5000
+            }
+          ]
+        }
+      ],
+      "started_at": "2020-07-15T17:16:03.17106713Z",
+      "locks_at": "2020-07-15T17:21:03.17106713Z"
+    }
+  },
+  {
+    "type": "channel.raid",
+    "version": "1",
+    "condition": {
+      "to_broadcaster_user_id": "1337"
+    },
+    "event": {
+      "from_broadcaster_user_id": "1234",
+      "from_broadcaster_user_login": "cool_user",
+      "from_broadcaster_user_name": "Cool_User",
+      "to_broadcaster_user_id": "1337",
+      "to_broadcaster_user_login": "cooler_user",
+      "to_broadcaster_user_name": "Cooler_User",
+      "viewers": 9001
+    }
+  },
+  {
+    "type": "channel.shared_chat.begin",
+    "version": "1",
+    "condition": {
+      "broadcaster_user_id": "1971641"
+    },
+    "event": {
+      "session_id": "2b64a92a-dbb8-424e-b1c3-304423ba1b6f",
+      "broadcaster_user_id": "1971641",
+      "broadcaster_user_login": "streamer",
+      "broadcaster_user_name": "streamer",
+      "host_broadcaster_user_id": "1971641",
+      "host_broadcaster_user_login": "streamer",
+      "host_broadcaster_user_name": "streamer",
+      "participants": [
+        {
+          "broadcaster_user_id": "1971641",
+          "broadcaster_user_name": "streamer",
+          "broadcaster_user_login": "streamer"
+        },
+        {
+          "broadcaster_user_id": "112233",
+          "broadcaster_user_name": "streamer33",
+          "broadcaster_user_login": "streamer33"
+        }
+      ]
+    }
+  },
+  {
+    "type": "channel.shared_chat.end",
+    "version": "1",
+    "condition": {
+      "broadcaster_user_id": "1971641"
+    },
+    "event": {
+      "session_id": "2b64a92a-dbb8-424e-b1c3-304423ba1b6f",
+      "broadcaster_user_id": "1971641",
+      "broadcaster_user_login": "streamer",
+      "broadcaster_user_name": "streamer",
+      "host_broadcaster_user_id": "1971641",
+      "host_broadcaster_user_login": "streamer",
+      "host_broadcaster_user_name": "streamer"
+    }
+  },
+  {
+    "type": "channel.shared_chat.update",
+    "version": "1",
+    "condition": {
+      "broadcaster_user_id": "1971641"
+    },
+    "event": {
+      "session_id": "2b64a92a-dbb8-424e-b1c3-304423ba1b6f",
+      "broadcaster_user_id": "1971641",
+      "broadcaster_user_login": "streamer",
+      "broadcaster_user_name": "streamer",
+      "host_broadcaster_user_id": "1971641",
+      "host_broadcaster_user_login": "streamer",
+      "host_broadcaster_user_name": "streamer",
+      "participants": [
+        {
+          "broadcaster_user_id": "1971641",
+          "broadcaster_user_name": "streamer",
+          "broadcaster_user_login": "streamer"
+        },
+        {
+          "broadcaster_user_id": "112233",
+          "broadcaster_user_name": "streamer33",
+          "broadcaster_user_login": "streamer33"
+        },
+        {
+          "broadcaster_user_id": "332211",
+          "broadcaster_user_name": "streamer11",
+          "broadcaster_user_login": "streamer11"
+        }
+      ]
+    }
+  },
+  {
+    "type": "channel.shield_mode.begin",
+    "version": "1",
+    "condition": {
+      "broadcaster_user_id": "12345",
+      "moderator_user_id": "98765"
+    },
+    "event": {
+      "broadcaster_user_id": "12345",
+      "broadcaster_user_name": "SimplySimple",
+      "broadcaster_user_login": "simplysimple",
+      "moderator_user_id": "98765",
+      "moderator_user_name": "ParticularlyParticular123",
+      "moderator_user_login": "particularlyparticular123",
+      "started_at": "2022-07-26T17:00:03.17106713Z"
+    }
+  },
+  {
+    "type": "channel.shield_mode.end",
+    "version": "1",
+    "condition": {
+      "broadcaster_user_id": "12345",
+      "moderator_user_id": "98765"
+    },
+    "event": {
+      "broadcaster_user_id": "12345",
+      "broadcaster_user_name": "SimplySimple",
+      "broadcaster_user_login": "simplysimple",
+      "moderator_user_id": "98765",
+      "moderator_user_name": "ParticularlyParticular123",
+      "moderator_user_login": "particularlyparticular123",
+      "ended_at": "2022-07-27T01:30:23.17106713Z"
+    }
+  },
+  {
+    "type": "channel.shoutout.create",
+    "version": "1",
+    "condition": {
+      "broadcaster_user_id": "12345",
+      "moderator_user_id": "98765"
+    },
+    "event": {
+      "broadcaster_user_id": "12345",
+      "broadcaster_user_name": "SimplySimple",
+      "broadcaster_user_login": "simplysimple",
+      "moderator_user_id": "98765",
+      "moderator_user_name": "ParticularlyParticular123",
+      "moderator_user_login": "particularlyparticular123",
+      "to_broadcaster_user_id": "626262",
+      "to_broadcaster_user_name": "SandySanderman",
+      "to_broadcaster_user_login": "sandysanderman",
+      "started_at": "2022-07-26T17:00:03Z",
+      "viewer_count": 860,
+      "cooldown_ends_at": "2022-07-26T17:02:03Z",
+      "target_cooldown_ends_at": "2022-07-26T18:00:03Z"
+    }
+  },
+  {
+    "type": "channel.shoutout.receive",
+    "version": "1",
+    "condition": {
+      "broadcaster_user_id": "626262",
+      "moderator_user_id": "98765"
+    },
+    "event": {
+      "broadcaster_user_id": "626262",
+      "broadcaster_user_name": "SandySanderman",
+      "broadcaster_user_login": "sandysanderman",
+      "from_broadcaster_user_id": "12345",
+      "from_broadcaster_user_name": "SimplySimple",
+      "from_broadcaster_user_login": "simplysimple",
+      "viewer_count": 860,
+      "started_at": "2022-07-26T17:00:03Z"
+    }
+  },
+  {
+    "type": "channel.subscribe",
+    "version": "1",
+    "condition": {
+      "broadcaster_user_id": "1337"
+    },
+    "event": {
+      "user_id": "1234",
+      "user_login": "cool_user",
+      "user_name": "Cool_User",
+      "broadcaster_user_id": "1337",
+      "broadcaster_user_login": "cooler_user",
+      "broadcaster_user_name": "Cooler_User",
+      "tier": "1000",
+      "is_gift": false
+    }
+  },
+  {
+    "type": "channel.subscription.end",
+    "version": "1",
+    "condition": {
+      "broadcaster_user_id": "1337"
+    },
+    "event": {
+      "user_id": "1234",
+      "user_login": "cool_user",
+      "user_name": "Cool_User",
+      "broadcaster_user_id": "1337",
+      "broadcaster_user_login": "cooler_user",
+      "broadcaster_user_name": "Cooler_User",
+      "tier": "1000",
+      "is_gift": false
+    }
+  },
+  {
+    "type": "channel.subscription.gift",
+    "version": "1",
+    "condition": {
+      "broadcaster_user_id": "1337"
+    },
+    "event": {
+      "user_id": "1234",
+      "user_login": "cool_user",
+      "user_name": "Cool_User",
+      "broadcaster_user_id": "1337",
+      "broadcaster_user_login": "cooler_user",
+      "broadcaster_user_name": "Cooler_User",
+      "total": 2,
+      "tier": "1000",
+      "cumulative_total": 284,
+      "is_anonymous": false
+    }
+  },
+  {
+    "type": "channel.subscription.message",
+    "version": "1",
+    "condition": {
+      "broadcaster_user_id": "1337"
+    },
+    "event": {
+      "user_id": "1234",
+      "user_login": "cool_user",
+      "user_name": "Cool_User",
+      "broadcaster_user_id": "1337",
+      "broadcaster_user_login": "cooler_user",
+      "broadcaster_user_name": "Cooler_User",
+      "tier": "1000",
+      "message": {
+        "text": "Love the stream! FevziGG",
+        "emotes": [
+          {
+            "begin": 17,
+            "end": 23,
+            "id": "302976485"
+          }
+        ]
+      },
+      "cumulative_months": 15,
+      "streak_months": 1,
+      "duration_months": 6
+    }
+  },
+  {
+    "type": "channel.suspicious_user.message",
+    "version": "1",
+    "condition": {
+      "moderator_user_id": "9001",
+      "broadcaster_user_id": "1337"
+    },
+    "event": {
+      "broadcaster_user_id": "1050263435",
+      "broadcaster_user_name": "77f111cbb75341449f5",
+      "broadcaster_user_login": "77f111cbb75341449f5",
+      "user_id": "1050263437",
+      "user_name": "06fbcc75952245c5a87",
+      "user_login": "06fbcc75952245c5a87",
+      "low_trust_status": "active_monitoring",
+      "shared_ban_channel_ids": [
+        "100",
+        "200"
+      ],
+      "types": [
+        "manually_added",
+        "banned_in_shared_channel"
+      ],
+      "ban_evasion_evaluation": "unknown",
+      "message": {
+        "message_id": "a2c1e5b8-7d3f-4e9a-b6c0-1f2e3d4c5b6a",
+        "text": "Hello Kappa",
+        "fragments": [
+          {
+            "type": "text",
+            "text": "Hello ",
+            "cheermote": null,
+            "emote": null
+          },
+          {
+            "type": "emote",
+            "text": "Kappa",
+            "cheermote": null,
+            "emote": {
+              "id": "25",
+              "emote_set_id": "0"
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "channel.suspicious_user.update",
+    "version": "1",
+    "condition": {
+      "moderator_user_id": "9001",
+      "broadcaster_user_id": "1337"
+    },
+    "event": {
+      "broadcaster_user_id": "1050263435",
+      "broadcaster_user_name": "77f111cbb75341449f5",
+      "broadcaster_user_login": "77f111cbb75341449f5",
+      "moderator_user_id": "1050263436",
+      "moderator_user_name": "29087e59dfc441968f6",
+      "moderator_user_login": "29087e59dfc441968f6",
+      "user_id": "1050263437",
+      "user_name": "06fbcc75952245c5a87",
+      "user_login": "06fbcc75952245c5a87",
+      "low_trust_status": "restricted"
+    }
+  },
+  {
+    "type": "channel.unban",
+    "version": "1",
+    "condition": {
+      "broadcaster_user_id": "1337"
+    },
+    "event": {
+      "user_id": "1234",
+      "user_login": "cool_user",
+      "user_name": "Cool_User",
+      "broadcaster_user_id": "1337",
+      "broadcaster_user_login": "cooler_user",
+      "broadcaster_user_name": "Cooler_User",
+      "moderator_user_id": "1339",
+      "moderator_user_login": "mod_user",
+      "moderator_user_name": "Mod_User"
+    }
+  },
+  {
+    "type": "channel.unban_request.create",
+    "version": "1",
+    "condition": {
+      "broadcaster_user_id": "1337",
+      "moderator_user_id": "1338"
+    },
+    "event": {
+      "id": "92af127c-7326-4483-a52b-b0da0be61c01",
+      "broadcaster_user_id": "1337",
+      "broadcaster_user_login": "cool_user",
+      "broadcaster_user_name": "Cool_User",
+      "user_id": "1339",
+      "user_login": "not_cool_user",
+      "user_name": "Not_Cool_User",
+      "text": "unban me",
+      "created_at": "2023-11-16T10:11:12.634234626Z"
+    }
+  },
+  {
+    "type": "channel.unban_request.resolve",
+    "version": "1",
+    "condition": {
+      "broadcaster_user_id": "1337",
+      "moderator_user_id": "1338"
+    },
+    "event": {
+      "id": "92af127c-7326-4483-a52b-b0da0be61c01",
+      "broadcaster_user_id": "1337",
+      "broadcaster_user_login": "cool_user",
+      "broadcaster_user_name": "Cool_User",
+      "moderator_user_id": "1337",
+      "moderator_user_login": "cool_user",
+      "moderator_user_name": "Cool_User",
+      "user_id": "1339",
+      "user_login": "not_cool_user",
+      "user_name": "Not_Cool_User",
+      "resolution_text": "no",
+      "status": "denied"
+    }
+  },
+  {
+    "type": "channel.update",
+    "version": "2",
+    "condition": {
+      "broadcaster_user_id": "1337"
+    },
+    "event": {
+      "broadcaster_user_id": "1337",
+      "broadcaster_user_login": "cool_user",
+      "broadcaster_user_name": "Cool_User",
+      "title": "Best Stream Ever",
+      "language": "en",
+      "category_id": "12453",
+      "category_name": "Grand Theft Auto",
+      "content_classification_labels": [
+        "MatureGame"
+      ]
+    }
+  },
+  {
+    "type": "channel.vip.add",
+    "version": "1",
+    "condition": {
+      "broadcaster_user_id": "1337"
+    },
+    "event": {
+      "user_id": "1234",
+      "user_login": "mod_user",
+      "user_name": "Mod_User",
+      "broadcaster_user_id": "1337",
+      "broadcaster_user_login": "cooler_user",
+      "broadcaster_user_name": "Cooler_User"
+    }
+  },
+  {
+    "type": "channel.vip.remove",
+    "version": "1",
+    "condition": {
+      "broadcaster_user_id": "1337"
+    },
+    "event": {
+      "user_id": "1234",
+      "user_login": "mod_user",
+      "user_name": "Mod_User",
+      "broadcaster_user_id": "1337",
+      "broadcaster_user_login": "cooler_user",
+      "broadcaster_user_name": "Cooler_User"
+    }
+  },
+  {
+    "type": "channel.warning.acknowledge",
+    "version": "1",
+    "condition": {
+      "broadcaster_user_id": "423374343",
+      "moderator_user_id": "424596340"
+    },
+    "event": {
+      "broadcaster_user_id": "423374343",
+      "broadcaster_user_login": "glowillig",
+      "broadcaster_user_name": "glowillig",
+      "user_id": "141981764",
+      "user_login": "twitchdev",
+      "user_name": "TwitchDev"
+    }
+  },
+  {
+    "type": "channel.warning.send",
+    "version": "1",
+    "condition": {
+      "broadcaster_user_id": "423374343",
+      "moderator_user_id": "424596340"
+    },
+    "event": {
+      "broadcaster_user_id": "423374343",
+      "broadcaster_user_login": "glowillig",
+      "broadcaster_user_name": "glowillig",
+      "moderator_user_id": "424596340",
+      "moderator_user_login": "quotrok",
+      "moderator_user_name": "quotrok",
+      "user_id": "141981764",
+      "user_login": "twitchdev",
+      "user_name": "TwitchDev",
+      "reason": "cut it out",
+      "chat_rules_cited": null
+    }
+  },
+  {
+    "type": "conduit.shard.disabled",
+    "version": "1",
+    "condition": {
+      "client_id": "uo6dggojyb8d6soh92zknwmi5ej1q2"
+    },
+    "event": {
+      "conduit_id": "bfcfc993-26b1-b876-44d9-afe75a379dac",
+      "shard_id": "4",
+      "status": "websocket_disconnected",
+      "transport": {
+        "method": "websocket",
+        "callback": null,
+        "session_id": "AQoQexAWVYKSTIu4ec_2VAxyuhAB",
+        "connected_at": "2020-11-10T14:32:18Z",
+        "disconnected_at": "2020-11-11T14:32:18Z"
+      }
+    }
+  },
+  {
+    "type": "extension.bits_transaction.create",
+    "version": "1",
+    "condition": {
+      "extension_client_id": "deadbeef"
+    },
+    "event": {
+      "id": "bits-tx-id",
+      "extension_client_id": "deadbeef",
+      "broadcaster_user_id": "1337",
+      "broadcaster_user_login": "cool_user",
+      "broadcaster_user_name": "Cool_User",
+      "user_name": "Coolest_User",
+      "user_login": "coolest_user",
+      "user_id": "1236",
+      "product": {
+        "name": "great_product",
+        "sku": "skuskusku",
+        "bits": 1234,
+        "in_development": false
+      }
+    }
+  },
+  {
+    "type": "stream.offline",
+    "version": "1",
+    "condition": {
+      "broadcaster_user_id": "1337"
+    },
+    "event": {
+      "id": "9001",
+      "broadcaster_user_id": "1337",
+      "broadcaster_user_login": "cool_user",
+      "broadcaster_user_name": "Cool_User"
+    }
+  },
+  {
+    "type": "stream.online",
+    "version": "1",
+    "condition": {
+      "broadcaster_user_id": "1337"
+    },
+    "event": {
+      "id": "9001",
+      "broadcaster_user_id": "1337",
+      "broadcaster_user_login": "cool_user",
+      "broadcaster_user_name": "Cool_User",
+      "type": "live",
+      "started_at": "2020-10-11T10:11:12Z"
+    }
+  },
+  {
+    "type": "user.authorization.grant",
+    "version": "1",
+    "condition": {
+      "client_id": "crq72vsaoijkc83xx42hz6i37"
+    },
+    "event": {
+      "client_id": "crq72vsaoijkc83xx42hz6i37",
+      "user_id": "1337",
+      "user_login": "cool_user",
+      "user_name": "Cool_User"
+    }
+  },
+  {
+    "type": "user.authorization.revoke",
+    "version": "1",
+    "condition": {
+      "client_id": "crq72vsaoijkc83xx42hz6i37"
+    },
+    "event": {
+      "client_id": "crq72vsaoijkc83xx42hz6i37",
+      "user_id": "1337",
+      "user_login": "cool_user",
+      "user_name": "Cool_User"
+    }
+  },
+  {
+    "type": "user.update",
+    "version": "1",
+    "condition": {
+      "user_id": "1337"
+    },
+    "event": {
+      "user_id": "1337",
+      "user_login": "cool_user",
+      "user_name": "Cool_User",
+      "email": "user@email.com",
+      "email_verified": true,
+      "description": "cool description"
+    }
+  },
+  {
+    "type": "user.whisper.message",
+    "version": "1",
+    "condition": {
+      "user_id": "423374343"
+    },
+    "event": {
+      "from_user_id": "424596340",
+      "from_user_login": "quotrok",
+      "from_user_name": "quotrok",
+      "to_user_id": "423374343",
+      "to_user_login": "glowillig",
+      "to_user_name": "glowillig",
+      "whisper_id": "34f4f3f0-2f6e-4b0a-9d1c-5b0e7c3d2a11",
+      "whisper": {
+        "text": "a secret"
+      }
+    }
+  }
+]

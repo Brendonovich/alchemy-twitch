@@ -112,7 +112,9 @@ describe("EventSub consumer subscribe", () => {
 
   it("exposes the scopes its types need", () => {
     expect(consumerFor(makeFakeHelix(), "conduit-9").scopes).toEqual([
+      "channel:bot",
       "moderator:read:followers",
+      "user:bot",
       "user:read:chat",
     ]);
   });
